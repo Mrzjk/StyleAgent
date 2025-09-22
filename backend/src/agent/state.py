@@ -1,7 +1,7 @@
 from typing import TypedDict, Annotated
 from pydantic import Field
 from langchain_core.messages import AnyMessage
-from langgraph.message import add_message
+from langgraph.graph.message import add_messages
 
 
 class InputState(TypedDict):
@@ -10,7 +10,7 @@ class InputState(TypedDict):
     """
     agent_style:Annotated[str,Field(description="智能体的风格")]
     prompt:Annotated[str,Field(description="特色风格智能体的提示")]
-    messages:Annotated[list[AnyMessage],add_message]
+    messages:Annotated[list[AnyMessage],add_messages]
 class OutputState(TypedDict):
     """
     输出参数
@@ -18,7 +18,5 @@ class OutputState(TypedDict):
 
     prompt:Annotated[str,Field(description="特色风格智能体的提示")]
 
-class AgentStyleState(TypeError):
-    messages:Annotated[list[AnyMessage],add_message]
-    agent_style:Annotated[str,Field(description="智能体的风格")]
-    prompt:Annotated[str,Field(description="智能体的提示")]
+class AgentStyleState(InputState,OutputState):
+    pass

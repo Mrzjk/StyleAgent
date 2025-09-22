@@ -13,15 +13,14 @@
         class="login-form"
         @submit.prevent="handleLogin"
       >
-        <el-form-item prop="email">
+       <el-form-item prop="username">
           <el-input
-            v-model="loginForm.email"
-            placeholder="请输入邮箱"
+            v-model="loginForm.username"
+            placeholder="请输入用户名"
             size="large"
             prefix-icon="Message"
           />
         </el-form-item>
-        
         <el-form-item prop="password">
           <el-input
             v-model="loginForm.password"
@@ -57,49 +56,52 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { useUserStore } from '../stores/user'
+import axios from 'axios'
 
 export default {
   name: 'Login',
   setup() {
     const router = useRouter()
-    const userStore = useUserStore()
+  
     const loginFormRef = ref()
     const loading = ref(false)
     
     const loginForm = reactive({
-      email: '',
+      username: '',
       password: ''
     })
     
     const rules = {
-      email: [
-        { required: true, message: '请输入邮箱', trigger: 'blur' },
-        { type: 'email', message: '请输入正确的邮箱格式', trigger: 'blur' }
+      username: [
+        { required: true, message: '请输入用户名', trigger: 'blur' }
       ],
+
       password: [
         { required: true, message: '请输入密码', trigger: 'blur' },
-        { min: 6, message: '密码长度不能少于6位', trigger: 'blur' }
+        { min: 4, message: '密码长度不能少于4位', trigger: 'blur' }
       ]
     }
     
     const handleLogin = async () => {
       if (!loginFormRef.value) return
       
-      await loginFormRef.value.validate(async (valid) => {
-        if (valid) {
+      try {
+          const valid = await loginFormRef.value.validate()
+          if (!valid) return
           loading.value = true
-          const result = await userStore.login(loginForm)
-          loading.value = false
-          
-          if (result.success) {
+          const result = await axios.post('/api/auth/login', loginForm)
+          if (result.data.code === 200) {
             ElMessage.success('登录成功')
             router.push('/dashboard')
           } else {
-            ElMessage.error(result.message)
+            ElMessage.error(result.data.message)
           }
-        }
-      })
+        } catch (err) {
+          // 表单验证失败会抛异常，可以不处理
+          console.log('表单验证失败', err)
+        } finally {
+          loading.value = false
+      }
     }
     
     return {
