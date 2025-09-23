@@ -1,0 +1,906 @@
+2025-09-23 22:47:24,775 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:47:24,796 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:47:24,846 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:47:24,863 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:47:24,897 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000022168D93BB0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:47:41,753 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:47:42,575 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000022168E7FDC0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:47:42,575 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 47, 41, 754868, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 47, 41, 754868, tzinfo=<UTC>), 1]
+2025-09-23 22:47:42,723 - root - INFO - agent_router.py:50 - 创建智能体成功，id为10
+2025-09-23 22:47:42,723 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 22:47:42,949 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:47:42,949 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:47:42,949 - tortoise.db_client - DEBUG - client.py:207 - SELECT `create_time`,`id`,`update_time`,`name` FROM `t_tag` WHERE `name`=%s: ['温馨']
+2025-09-23 22:48:43,377 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:48:43,377 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:48:45,183 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:48:45,203 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:48:45,245 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:48:45,262 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:48:45,289 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000027D192A79D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:48:47,613 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:48:48,534 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000027D1938F5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:48:48,534 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 48, 47, 613776, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 48, 47, 613776, tzinfo=<UTC>), 1]
+2025-09-23 22:48:48,694 - root - INFO - agent_router.py:50 - 创建智能体成功，id为11
+2025-09-23 22:48:48,696 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 22:48:48,810 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:48:48,811 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:48:48,813 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:48:48,815 - tortoise.db_client - DEBUG - client.py:207 - SELECT `create_time`,`id`,`name`,`update_time` FROM `t_tag` WHERE `name`=%s: ['温馨']
+2025-09-23 22:49:23,286 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:49:23,286 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:49:25,083 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:49:25,102 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:49:25,146 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:49:25,162 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:49:25,194 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000002351CF239D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:49:26,913 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:49:27,805 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000002351D00F5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:49:27,806 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 49, 26, 917378, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 49, 26, 917378, tzinfo=<UTC>), 1]
+2025-09-23 22:49:27,947 - root - INFO - agent_router.py:50 - 创建智能体成功，id为12
+2025-09-23 22:49:27,949 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 22:49:28,063 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:49:28,063 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:49:28,063 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:49:28,063 - tortoise.db_client - DEBUG - client.py:207 - SELECT `update_time`,`name`,`create_time`,`id` FROM `t_tag` WHERE `name`=%s: ['温馨']
+2025-09-23 22:49:28,189 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为[<Tag: 1>]
+2025-09-23 22:50:42,273 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:50:42,273 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:50:44,039 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:50:44,060 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:50:44,100 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:50:44,116 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:50:44,147 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000020792FD39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:50:46,668 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:50:47,918 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x00000207930BF5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:50:47,918 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 50, 46, 673936, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 50, 46, 673936, tzinfo=<UTC>), 1]
+2025-09-23 22:50:53,015 - root - INFO - agent_router.py:50 - 创建智能体成功，id为13
+2025-09-23 22:50:53,015 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 22:50:53,293 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:50:53,293 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:50:53,293 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:50:53,298 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id`,`create_time`,`name`,`update_time` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:50:53,417 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为<Tag>
+2025-09-23 22:50:53,435 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id`,`create_time`,`name`,`update_time` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可爱', 1]
+2025-09-23 22:50:53,559 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 22:50:53,559 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可爱', None, None]
+2025-09-23 22:51:30,903 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:51:30,905 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:51:32,473 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:51:32,495 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:51:32,544 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:51:32,567 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:51:32,598 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000001E3728BF9D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:51:35,708 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:51:36,558 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000001E3729AF5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:51:36,559 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 51, 35, 708479, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 51, 35, 708479, tzinfo=<UTC>), 1]
+2025-09-23 22:51:36,701 - root - INFO - agent_router.py:50 - 创建智能体成功，id为14
+2025-09-23 22:51:36,703 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 22:51:36,828 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:51:36,829 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:51:36,829 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:51:36,830 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:51:36,963 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:52:23,776 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:52:23,776 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:52:25,683 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:52:25,706 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:52:25,751 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:52:25,767 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:52:25,797 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000001AABE9739D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:52:27,931 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:52:28,779 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000001AABEA5F5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:52:28,779 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 52, 27, 931436, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 52, 27, 931436, tzinfo=<UTC>), 1]
+2025-09-23 22:52:28,929 - root - INFO - agent_router.py:50 - 创建智能体成功，id为15
+2025-09-23 22:52:28,929 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 22:52:29,067 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:52:29,067 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:52:29,067 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:52:29,070 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:52:29,195 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:55:33,565 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:55:33,565 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:55:34,761 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:55:34,782 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:55:34,824 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:55:34,841 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:55:34,871 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000002D131A739D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:55:38,369 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:55:39,153 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000002D131B5F5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:55:39,153 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 55, 38, 386453, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 55, 38, 386453, tzinfo=<UTC>), 1]
+2025-09-23 22:55:39,384 - root - INFO - agent_router.py:50 - 创建智能体成功，id为16
+2025-09-23 22:55:39,384 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 22:55:39,495 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:55:39,495 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:55:39,500 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:55:39,502 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id`,`create_time`,`name`,`update_time` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:55:39,618 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为<Tag>
+2025-09-23 22:55:39,618 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [16, 1]
+2025-09-23 22:56:05,479 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:56:05,480 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:56:06,644 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:56:06,677 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:56:06,721 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:56:06,800 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:56:06,833 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000001F52CB039D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:56:10,180 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:56:10,914 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000001F52CBEF5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:56:10,914 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 56, 10, 201064, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 56, 10, 201064, tzinfo=<UTC>), 1]
+2025-09-23 22:56:11,065 - root - INFO - agent_router.py:50 - 创建智能体成功，id为17
+2025-09-23 22:56:11,065 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 22:56:11,188 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:56:11,189 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:56:11,189 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:56:11,192 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:56:11,314 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:56:11,314 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [17, 1]
+2025-09-23 22:57:39,281 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:57:39,283 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:57:45,500 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:57:45,522 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:57:45,566 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:57:45,588 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:57:45,617 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x00000200D79439D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:57:48,553 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:57:49,450 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x00000200D7A33F10> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:57:49,450 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 57, 48, 553141, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 57, 48, 553141, tzinfo=<UTC>), 1]
+2025-09-23 22:57:49,596 - root - INFO - agent_router.py:50 - 创建智能体成功，id为18
+2025-09-23 22:57:49,601 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 22:57:49,709 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:57:49,709 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:57:49,709 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:57:49,715 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:57:49,820 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:57:49,821 - root - INFO - agent_router.py:72 - 目前的标签：{'id': 1, 'name': '温馨'},类型：<class 'dict'>
+2025-09-23 22:57:49,821 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [18, 1]
+2025-09-23 22:58:28,254 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:58:28,256 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 58, 28, 256766, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 58, 28, 256766, tzinfo=<UTC>), 1]
+2025-09-23 22:58:28,389 - root - INFO - agent_router.py:50 - 创建智能体成功，id为19
+2025-09-23 22:58:28,391 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 22:58:28,484 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:58:28,484 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:58:28,485 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:58:28,485 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:58:28,588 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:58:28,589 - root - INFO - agent_router.py:72 - 目前的标签：{'id': 1, 'name': '温馨'},类型：<class 'dict'>
+2025-09-23 22:58:28,591 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [19, 1]
+2025-09-23 22:58:28,705 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可爱', 1]
+2025-09-23 22:58:28,811 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 22:58:28,812 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可爱', None, None]
+2025-09-23 22:58:33,757 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:58:33,757 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 58, 33, 757727, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 58, 33, 757727, tzinfo=<UTC>), 1]
+2025-09-23 22:58:33,862 - root - INFO - agent_router.py:50 - 创建智能体成功，id为20
+2025-09-23 22:58:33,863 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [20]
+2025-09-23 22:58:33,960 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:58:33,961 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:58:33,961 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:58:33,963 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:58:34,053 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:58:34,053 - root - INFO - agent_router.py:72 - 目前的标签：{'id': 1, 'name': '温馨'},类型：<class 'dict'>
+2025-09-23 22:58:34,067 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [20, 1]
+2025-09-23 22:58:34,161 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可爱', 1]
+2025-09-23 22:58:34,235 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 22:58:34,235 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可爱', None, None]
+2025-09-23 22:58:42,504 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:58:42,504 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:58:46,640 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:58:46,660 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:58:46,702 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:58:46,717 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:58:46,745 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x00000175EBA939D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:58:49,035 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:58:49,957 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x00000175EBB835E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:58:49,958 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 58, 49, 40375, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 58, 49, 40375, tzinfo=<UTC>), 1]
+2025-09-23 22:58:50,099 - root - INFO - agent_router.py:50 - 创建智能体成功，id为21
+2025-09-23 22:58:50,101 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [21]
+2025-09-23 22:58:50,247 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:58:50,247 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:58:50,249 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:58:50,249 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:58:50,368 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:58:50,369 - root - INFO - agent_router.py:72 - 目前的标签：{'id': 1, 'name': '温馨'},类型：<class 'dict'>
+2025-09-23 22:58:50,371 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [21, 1]
+2025-09-23 22:58:50,495 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可爱', 1]
+2025-09-23 22:58:50,601 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 22:58:50,601 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可爱', None, None]
+2025-09-23 22:59:34,274 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:59:34,274 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 22:59:36,047 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:59:36,063 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 22:59:36,108 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 22:59:36,126 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 22:59:36,148 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000002A32E0839D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 22:59:37,312 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 22:59:38,071 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000002A32E1735E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 22:59:38,071 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 14, 59, 37, 325931, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 14, 59, 37, 325931, tzinfo=<UTC>), 1]
+2025-09-23 22:59:38,328 - root - INFO - agent_router.py:50 - 创建智能体成功，id为22
+2025-09-23 22:59:38,329 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [22]
+2025-09-23 22:59:38,460 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 22:59:38,460 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 22:59:38,460 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 22:59:38,460 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 22:59:38,585 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 22:59:38,585 - root - INFO - agent_router.py:72 - 目前的标签：{'id': 1, 'name': '温馨'},类型：<class 'dict'>
+2025-09-23 22:59:38,585 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [22, 1]
+2025-09-23 22:59:38,711 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可爱', 1]
+2025-09-23 22:59:38,826 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 22:59:38,826 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可爱', None, None]
+2025-09-23 23:00:28,531 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:00:28,532 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:00:30,742 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:00:30,764 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:00:30,806 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:00:30,824 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:00:30,853 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000001F0FC6139D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:00:36,511 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 23:00:37,199 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000001F0FC7035E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:00:37,199 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 0, 36, 520550, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 0, 36, 520550, tzinfo=<UTC>), 1]
+2025-09-23 23:00:37,411 - root - INFO - agent_router.py:50 - 创建智能体成功，id为23
+2025-09-23 23:00:37,412 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [23]
+2025-09-23 23:00:37,515 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:00:37,515 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:00:37,515 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 23:00:37,516 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 23:00:37,615 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 23:00:37,616 - root - INFO - agent_router.py:72 - 目前的标签：{'id': 1, 'name': '温馨'},类型：<class 'dict'>
+2025-09-23 23:00:37,617 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [23, 1]
+2025-09-23 23:00:37,726 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可爱', 1]
+2025-09-23 23:00:37,832 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 23:00:37,832 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可爱', None, None]
+2025-09-23 23:01:50,627 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:01:50,627 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:02:18,363 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:02:18,379 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:02:18,426 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:02:18,441 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:02:18,471 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x00000256A54B39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:02:23,473 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 23:02:24,339 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x00000256A55A35E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:02:24,339 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['可爱的小娃', '可爱可爱！', '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 2, 23, 492765, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 2, 23, 492765, tzinfo=<UTC>), 1]
+2025-09-23 23:02:24,456 - root - INFO - agent_router.py:50 - 创建智能体成功，id为24
+2025-09-23 23:02:24,456 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [24]
+2025-09-23 23:02:24,579 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:02:24,580 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:02:24,581 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['温馨', '可爱']
+2025-09-23 23:02:24,582 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['温馨', 1]
+2025-09-23 23:02:24,694 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为{'id': 1, 'name': '温馨'}
+2025-09-23 23:02:24,695 - root - INFO - agent_router.py:72 - 目前的标签：{'id': 1, 'name': '温馨'},类型：<class 'dict'>
+2025-09-23 23:02:24,697 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [24, 1]
+2025-09-23 23:02:24,809 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可爱', 1]
+2025-09-23 23:02:24,907 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 23:02:24,907 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可爱', None, None]
+2025-09-23 23:02:36,558 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:02:36,695 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:02:36,826 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:02:36,944 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:02:37,061 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:02:37,207 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:02:37,333 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:02:37,460 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:02:38,313 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name`,`description` `description` FROM `t_category`: []
+2025-09-23 23:02:38,313 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:02:38,428 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:02:38,481 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name`,`create_time` `create_time`,`update_time` `update_time` FROM `t_tag`: []
+2025-09-23 23:02:38,553 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:02:38,669 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:02:38,778 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:02:38,895 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:02:39,011 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:02:39,111 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:02:48,518 - root - INFO - agent_router.py:42 - 创建智能体中..........
+2025-09-23 23:02:48,520 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['11111111111111111111', '11111111', '111111111111111111111111111', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 2, 48, 519259, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 2, 48, 519259, tzinfo=<UTC>), 1]
+2025-09-23 23:02:48,787 - root - INFO - agent_router.py:50 - 创建智能体成功，id为25
+2025-09-23 23:02:48,787 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [25]
+2025-09-23 23:02:48,917 - root - INFO - agent_router.py:54 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:02:48,917 - root - INFO - agent_router.py:61 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:02:48,917 - root - INFO - agent_router.py:62 - 目前创建智能体的标签为['可以']
+2025-09-23 23:02:48,932 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['可以', 1]
+2025-09-23 23:02:49,066 - root - INFO - agent_router.py:68 - 判断这个标签是否存在，结果为None
+2025-09-23 23:02:49,068 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['可以', None, None]
+2025-09-23 23:03:05,469 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:03:05,627 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:03:05,741 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:03:05,857 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:03:05,969 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:03:06,084 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:03:06,202 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:03:06,315 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:03:06,525 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:03:06,637 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:03:06,748 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:03:06,861 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:03:06,980 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:03:07,072 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:03:07,188 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:03:07,289 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:03:16,004 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`username` `username`,`password_hash` `password_hash`,`email` `email` FROM `users` WHERE `username`=%s ORDER BY `created_at` DESC LIMIT %s: ['admin', 1]
+2025-09-23 23:03:16,126 - passlib.handlers.bcrypt - DEBUG - bcrypt.py:625 - detected 'bcrypt' backend, version '4.0.1'
+2025-09-23 23:03:16,126 - passlib.handlers.bcrypt - DEBUG - bcrypt.py:406 - 'bcrypt' backend lacks $2$ support, enabling workaround
+2025-09-23 23:03:16,728 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:03:16,839 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:03:16,944 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:03:17,060 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:03:17,160 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:03:17,260 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:03:17,356 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:03:17,444 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:03:17,549 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:03:17,661 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:03:17,761 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:03:17,879 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:03:17,997 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:03:18,111 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:03:18,212 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:03:18,322 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:03:51,740 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:03:51,740 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:03:53,424 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:03:53,452 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:03:53,494 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:03:53,511 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:03:53,540 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000001FC64F939D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:03:56,927 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000001FC650C8520> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:03:56,929 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:03:57,041 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:03:57,125 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:03:57,227 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:03:57,325 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:03:57,441 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:03:57,541 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:03:57,647 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:03:57,741 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:03:57,844 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:03:57,942 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:03:58,058 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:03:58,159 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:03:58,258 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:03:58,359 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:03:58,461 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:05:13,935 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:05:13,935 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:05:15,063 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:05:15,095 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:05:15,138 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:05:15,162 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:05:15,198 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x00000165147039D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:05:19,691 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000016514838520> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:05:19,691 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:05:19,823 - root - INFO - agent_router.py:18 - 获取所有智能体中[{'id': 1, 'name': '哈利波特', 'description': '哈利波特风格聊天助手', 'prompt': None, 'image': None, 'category_id': None, 'style_name': None}, {'id': 7, 'name': '111111111111111111', 'description': '111111111111111', 'prompt': '1111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 8, 'name': '狼人杀', 'description': '狼人杀风格助手', 'prompt': '1111111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 9, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 10, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 11, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 12, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 13, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 14, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 15, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 16, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 17, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 18, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 19, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 20, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 21, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 22, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 23, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 24, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}, {'id': 25, 'name': '11111111111111111111', 'description': '11111111', 'prompt': '111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}]
+2025-09-23 23:06:10,227 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:06:10,227 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:06:13,793 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:06:13,810 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:06:13,863 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:06:13,882 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:06:13,915 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000002483EFA39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:06:16,913 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000002483F0D84F0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:06:16,913 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:06:17,033 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 1, 'name': '哈利波特', 'description': '哈利波特风格聊天助手', 'prompt': None, 'image': None, 'category_id': None, 'style_name': None}
+2025-09-23 23:06:17,033 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:06:17,164 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 7, 'name': '111111111111111111', 'description': '111111111111111', 'prompt': '1111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:17,164 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:06:17,281 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 8, 'name': '狼人杀', 'description': '狼人杀风格助手', 'prompt': '1111111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:17,281 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:06:17,396 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 9, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:17,396 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:06:17,531 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 10, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:17,531 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:06:17,647 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 11, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:17,663 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:06:17,781 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 12, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:17,781 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:06:17,897 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 13, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:17,897 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:06:18,030 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 14, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:18,030 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:06:18,147 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 15, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:18,163 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:06:18,280 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 16, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:18,280 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:06:18,397 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 17, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:18,397 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:06:18,514 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 18, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:18,514 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:06:18,631 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 19, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:06:18,631 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:06:18,764 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:07:08,613 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:07:08,614 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:07:10,804 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:07:10,880 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:07:10,934 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:07:10,961 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:07:10,989 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000022CC2BD39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:07:13,227 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000022CC2D08520> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:07:13,227 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:07:13,316 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 1, 'name': '哈利波特', 'description': '哈利波特风格聊天助手', 'prompt': None, 'image': None, 'category_id': None, 'style_name': None}
+2025-09-23 23:07:13,316 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:07:13,433 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 7, 'name': '111111111111111111', 'description': '111111111111111', 'prompt': '1111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:13,433 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:07:13,534 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 8, 'name': '狼人杀', 'description': '狼人杀风格助手', 'prompt': '1111111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:13,534 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:07:13,632 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 9, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:13,632 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:07:13,731 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 10, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:13,732 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:07:13,829 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 11, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:13,829 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:07:13,918 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 12, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:13,918 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:07:14,013 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 13, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:14,014 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:07:14,118 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 14, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:14,118 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:07:14,216 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 15, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:14,216 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:07:14,314 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 16, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:14,315 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:07:14,417 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 17, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:14,418 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:07:14,521 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 18, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:14,522 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:07:14,625 - root - INFO - agent_router.py:21 - 依次遍历智能体中{'id': 19, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻'}
+2025-09-23 23:07:14,625 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:07:14,716 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:07:14,817 - root - INFO - agent_router.py:26 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:08:06,854 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:08:06,854 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:08:08,404 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:08:08,426 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:08:08,480 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:08:08,496 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:08:08,528 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000020521F739D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:08:10,702 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x00000205220AC4F0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:08:10,702 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:08:33,848 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:08:33,848 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:08:35,731 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:08:35,752 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:08:35,781 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:08:35,799 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:08:35,837 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x00000249CA7B39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:08:38,667 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x00000249CA8EC520> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:08:38,667 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:08:38,766 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 1, 'name': '哈利波特', 'description': '哈利波特风格聊天助手', 'prompt': None, 'image': None, 'category_id': None, 'style_name': None, 'tags': []}
+2025-09-23 23:08:38,766 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:08:38,901 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 7, 'name': '111111111111111111', 'description': '111111111111111', 'prompt': '1111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:38,901 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:08:38,983 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 8, 'name': '狼人杀', 'description': '狼人杀风格助手', 'prompt': '1111111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:38,983 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:08:39,083 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 9, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,099 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:08:39,199 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 10, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,199 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:08:39,301 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 11, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,317 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:08:39,516 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 12, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,516 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:08:39,624 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 13, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,633 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:08:39,716 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 14, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,716 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:08:39,816 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 15, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,816 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:08:39,916 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 16, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:39,916 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:08:40,016 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 17, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:40,016 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:08:40,119 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 18, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:40,119 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:08:40,216 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 19, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:40,216 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:08:40,352 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:08:40,467 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:08:40,470 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 20, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:40,470 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [20]
+2025-09-23 23:08:40,567 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:08:40,667 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:08:40,669 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 21, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:40,669 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [21]
+2025-09-23 23:08:40,767 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:08:41,184 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:08:41,184 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 22, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:41,184 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [22]
+2025-09-23 23:08:41,290 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:08:41,384 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:08:41,384 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 23, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:41,384 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [23]
+2025-09-23 23:08:41,481 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:08:41,568 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:08:41,568 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 24, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:41,568 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [24]
+2025-09-23 23:08:41,666 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:08:41,751 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:08:41,751 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 25, 'name': '11111111111111111111', 'description': '11111111', 'prompt': '111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:08:41,751 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [25]
+2025-09-23 23:09:22,351 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:09:22,351 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:09:23,999 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:09:24,021 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:09:24,050 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:09:24,070 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:09:24,101 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000015CCC0D39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:09:27,199 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000015CCC208520> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:09:27,199 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:09:27,334 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 1, 'name': '哈利波特', 'description': '哈利波特风格聊天助手', 'prompt': None, 'image': None, 'category_id': None, 'style_name': None, 'tags': []}
+2025-09-23 23:09:27,334 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:09:27,768 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 7, 'name': '111111111111111111', 'description': '111111111111111', 'prompt': '1111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:27,785 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:09:27,886 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 8, 'name': '狼人杀', 'description': '狼人杀风格助手', 'prompt': '1111111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:27,886 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:09:28,003 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 9, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,003 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:09:28,118 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 10, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,118 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:09:28,219 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 11, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,237 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:09:28,334 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 12, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,351 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:09:28,467 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 13, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,471 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:09:28,577 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 14, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,584 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:09:28,701 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 15, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,701 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:09:28,821 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 16, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,821 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:09:28,935 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 17, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:28,935 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:09:29,035 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 18, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:29,035 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:09:29,153 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 19, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:09:29,153 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:09:29,256 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s: [1]
+2025-09-23 23:09:29,368 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中[{'name': '温馨'}]
+2025-09-23 23:10:06,799 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:10:06,799 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:10:08,196 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:10:08,217 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:10:08,264 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:10:08,281 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:10:08,320 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000020986DA39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:10:11,520 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000020986EDC520> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:10:11,520 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:10:11,635 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 1, 'name': '哈利波特', 'description': '哈利波特风格聊天助手', 'prompt': None, 'image': None, 'category_id': None, 'style_name': None, 'tags': []}
+2025-09-23 23:10:11,635 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:10:11,751 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 7, 'name': '111111111111111111', 'description': '111111111111111', 'prompt': '1111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:11,751 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:10:11,884 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 8, 'name': '狼人杀', 'description': '狼人杀风格助手', 'prompt': '1111111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:11,884 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:10:12,002 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 9, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,005 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:10:12,119 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 10, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,119 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:10:12,235 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 11, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,235 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:10:12,357 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 12, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,357 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:10:12,575 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 13, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,575 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:10:12,705 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 14, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,705 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:10:12,834 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 15, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,834 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:10:12,952 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 16, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:12,952 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:10:13,080 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 17, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:13,081 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:10:13,536 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 18, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:13,536 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:10:13,670 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 19, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:13,670 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:10:13,897 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:10:14,036 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:10:14,036 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 20, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:14,036 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [20]
+2025-09-23 23:10:14,179 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:10:14,302 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:10:14,305 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 21, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:14,305 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [21]
+2025-09-23 23:10:14,421 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:10:14,555 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:10:14,555 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 22, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:14,555 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [22]
+2025-09-23 23:10:14,704 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:10:14,838 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:10:14,838 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 23, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:14,838 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [23]
+2025-09-23 23:10:15,004 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:10:15,153 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:10:15,153 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 24, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:15,153 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [24]
+2025-09-23 23:10:15,386 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:10:15,523 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:10:15,523 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 25, 'name': '11111111111111111111', 'description': '11111111', 'prompt': '111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:10:15,523 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [25]
+2025-09-23 23:10:24,294 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name`,`description` `description` FROM `t_category`: []
+2025-09-23 23:10:24,423 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name`,`create_time` `create_time`,`update_time` `update_time` FROM `t_tag`: []
+2025-09-23 23:11:09,007 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:11:09,007 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 11, 9, 7454, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 11, 9, 7454, tzinfo=<UTC>), 1]
+2025-09-23 23:11:09,307 - root - INFO - agent_router.py:55 - 创建智能体成功，id为26
+2025-09-23 23:11:09,307 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [26]
+2025-09-23 23:11:09,457 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:11:09,457 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:11:09,457 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:11:09,457 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:11:09,574 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None
+2025-09-23 23:11:09,591 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:14:40,755 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:14:40,755 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:14:44,106 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:14:44,127 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:14:44,173 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:14:44,191 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:14:44,212 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000018550CD39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:14:47,303 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:14:48,372 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000018550DC35E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:14:48,372 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 14, 47, 311066, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 14, 47, 311066, tzinfo=<UTC>), 1]
+2025-09-23 23:14:48,558 - root - INFO - agent_router.py:55 - 创建智能体成功，id为27
+2025-09-23 23:14:48,558 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [27]
+2025-09-23 23:14:48,675 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:14:48,675 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:14:48,675 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:14:48,684 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`name` `name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:14:49,115 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None
+2025-09-23 23:14:49,120 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:15:22,830 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:15:22,830 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:15:24,671 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:15:24,692 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:15:24,738 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:15:24,759 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:15:24,791 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000002AC210D39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:15:28,057 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:15:28,739 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000002AC211C35E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:15:28,739 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 15, 28, 60047, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 15, 28, 60047, tzinfo=<UTC>), 1]
+2025-09-23 23:15:28,875 - root - INFO - agent_router.py:55 - 创建智能体成功，id为28
+2025-09-23 23:15:28,875 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [28]
+2025-09-23 23:15:28,973 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:15:28,973 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:15:28,973 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:15:28,973 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name`,`create_time`,`id`,`update_time` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:15:29,080 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None
+2025-09-23 23:15:29,080 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:16:31,497 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:16:31,500 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:16:33,738 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:16:33,760 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:16:33,801 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:16:33,818 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:16:33,848 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000022CAA1539D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:16:36,951 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:16:37,465 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000022CAA23F5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:16:37,465 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 16, 36, 969271, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 16, 36, 969271, tzinfo=<UTC>), 1]
+2025-09-23 23:16:37,583 - root - INFO - agent_router.py:55 - 创建智能体成功，id为29
+2025-09-23 23:16:37,583 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [29]
+2025-09-23 23:16:37,661 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:16:37,662 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:16:37,663 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:16:37,666 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name`,`id`,`update_time`,`create_time` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:16:37,735 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None, 类型=<class 'NoneType'>
+2025-09-23 23:16:37,737 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:17:52,860 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:17:52,860 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:17:54,615 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:17:54,648 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:17:54,688 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:17:54,705 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:17:54,739 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x00000295940539D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:17:57,737 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:17:58,347 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000002959413F5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:17:58,347 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 17, 57, 750423, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 17, 57, 750423, tzinfo=<UTC>), 1]
+2025-09-23 23:17:58,496 - root - INFO - agent_router.py:55 - 创建智能体成功，id为30
+2025-09-23 23:17:58,497 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [30]
+2025-09-23 23:17:58,576 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:17:58,580 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:17:58,580 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:17:58,581 - tortoise.db_client - DEBUG - client.py:207 - SELECT `update_time`,`name`,`id`,`create_time` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:17:58,669 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None, 类型=<class 'NoneType'>
+2025-09-23 23:17:58,669 - root - INFO - agent_router.py:74 - True
+2025-09-23 23:17:58,671 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:18:19,973 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:18:19,975 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:18:21,640 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:18:21,656 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:18:21,704 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:18:21,725 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:18:21,761 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x0000020302F039D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:18:23,626 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:18:24,411 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x0000020302FBF5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:18:24,411 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 18, 23, 626908, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 18, 23, 626908, tzinfo=<UTC>), 1]
+2025-09-23 23:18:24,557 - root - INFO - agent_router.py:55 - 创建智能体成功，id为31
+2025-09-23 23:18:24,557 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [31]
+2025-09-23 23:18:24,672 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:18:24,673 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:18:24,673 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:18:24,676 - tortoise.db_client - DEBUG - client.py:207 - SELECT `create_time`,`id`,`update_time`,`name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:18:24,781 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None, 类型=<class 'NoneType'>
+2025-09-23 23:18:24,782 - root - INFO - agent_router.py:74 - True
+2025-09-23 23:18:24,783 - root - INFO - agent_router.py:76 - 恐怖不存在，则创建标签
+2025-09-23 23:18:24,784 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:20:26,739 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:20:26,740 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 20, 26, 740671, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 20, 26, 740671, tzinfo=<UTC>), 1]
+2025-09-23 23:20:26,834 - root - INFO - agent_router.py:55 - 创建智能体成功，id为32
+2025-09-23 23:20:26,836 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [32]
+2025-09-23 23:20:26,925 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:20:26,925 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:20:26,925 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:20:26,926 - tortoise.db_client - DEBUG - client.py:207 - SELECT `create_time`,`id`,`update_time`,`name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:20:27,017 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None, 类型=<class 'NoneType'>
+2025-09-23 23:20:27,019 - root - INFO - agent_router.py:74 - True
+2025-09-23 23:20:27,021 - root - INFO - agent_router.py:76 - 恐怖不存在，则创建标签
+2025-09-23 23:20:27,023 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:21:31,028 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:21:31,030 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:21:32,891 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:21:32,911 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:21:32,952 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:21:32,970 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:21:32,997 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x00000212623CF9D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:21:35,232 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:21:35,891 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x00000212624BFF10> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:21:35,891 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 21, 35, 232663, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 21, 35, 232663, tzinfo=<UTC>), 1]
+2025-09-23 23:21:35,971 - root - INFO - agent_router.py:55 - 创建智能体成功，id为33
+2025-09-23 23:21:35,971 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [33]
+2025-09-23 23:21:36,056 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:21:36,057 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:21:36,057 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:21:36,058 - tortoise.db_client - DEBUG - client.py:207 - SELECT `update_time`,`create_time`,`id`,`name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:21:36,140 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为None, 类型=<class 'NoneType'>
+2025-09-23 23:21:36,141 - root - INFO - agent_router.py:74 - True
+2025-09-23 23:21:36,141 - root - INFO - agent_router.py:76 - 恐怖不存在，则创建标签
+2025-09-23 23:21:36,141 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_tag` (`name`,`create_time`,`update_time`) VALUES (%s,%s,%s): ['恐怖', None, None]
+2025-09-23 23:21:36,221 - root - INFO - agent_router.py:78 - 恐怖不存在，则创建标签成功，id为2
+2025-09-23 23:21:36,221 - root - INFO - agent_router.py:79 - 目前的标签：<Tag>,类型：<class 'api.models.tag.Tag'>
+2025-09-23 23:22:00,625 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:22:00,625 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown
+2025-09-23 23:22:02,552 - __main__ - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:22:02,573 - asyncio - DEBUG - proactor_events.py:630 - Using proactor: IocpProactor
+2025-09-23 23:22:02,615 - main - INFO - main.py:23 - 风格智能体助手启动完成
+2025-09-23 23:22:02,631 - tortoise - DEBUG - __init__.py:505 - Tortoise-ORM startup
+    connections: {'default': {'engine': 'tortoise.backends.mysql', 'credentials': {'port': 3306, 'charset': 'utf8mb4', 'sql_mode': 'STRICT_TRANS_TABLES', 'database': 'agent', 'host': '8.155.16.137', 'user': 'root', 'password': '12***'}}}
+    apps: {'models': {'models': ['api.models'], 'default_connection': 'default'}}
+2025-09-23 23:22:02,662 - tortoise - INFO - __init__.py:163 - Tortoise-ORM started, {'default': <tortoise.backends.mysql.client.MySQLClient object at 0x000001D3B1BB39D0>}, {'models': {'AgentCard': <class 'api.models.agent_card.AgentCard'>, 'AgentTag': <class 'api.models.agent_tag.AgentTag'>, 'Category': <class 'api.models.category.Category'>, 'Tag': <class 'api.models.tag.Tag'>, 'User': <class 'api.models.user.User'>}}
+2025-09-23 23:22:05,142 - root - INFO - agent_router.py:47 - 创建智能体中..........
+2025-09-23 23:22:05,681 - tortoise.db_client - DEBUG - client.py:140 - Created connection <aiomysql.pool.Pool object at 0x000001D3B1C9F5E0> pool with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:22:05,681 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_cards` (`name`,`description`,`prompt`,`image`,`temperature`,`version`,`status`,`visibility`,`example_inputs`,`example_outputs`,`max_tokens`,`tool_bindings`,`author_id`,`usage_count`,`rating`,`created_at`,`updated_at`,`category_id`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s): ['2222222222222222222', '222222222222', '222222222222222222222222222', None, Decimal('0.7'), '1.0', 'active', 'public', None, None, 2048, None, None, 0, None, datetime.datetime(2025, 9, 23, 15, 22, 5, 150681, tzinfo=<UTC>), datetime.datetime(2025, 9, 23, 15, 22, 5, 150681, tzinfo=<UTC>), 1]
+2025-09-23 23:22:05,761 - root - INFO - agent_router.py:55 - 创建智能体成功，id为34
+2025-09-23 23:22:05,761 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id` `id`,`tag_id` `tag_id`,`agent_id` `agent_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [34]
+2025-09-23 23:22:05,842 - root - INFO - agent_router.py:59 - 获取智能体目前所有的标签，避免重复，结果为[]
+2025-09-23 23:22:05,842 - root - INFO - agent_router.py:66 - 获取智能体所有标签的name，结果为[]
+2025-09-23 23:22:05,842 - root - INFO - agent_router.py:67 - 目前创建智能体的标签为['恐怖']
+2025-09-23 23:22:05,842 - tortoise.db_client - DEBUG - client.py:207 - SELECT `id`,`update_time`,`create_time`,`name` FROM `t_tag` WHERE `name`=%s LIMIT %s: ['恐怖', 1]
+2025-09-23 23:22:05,932 - root - INFO - agent_router.py:73 - 判断这个标签是否存在，结果为<Tag>, 类型=<class 'api.models.tag.Tag'>
+2025-09-23 23:22:05,933 - root - INFO - agent_router.py:74 - False
+2025-09-23 23:22:05,934 - root - INFO - agent_router.py:79 - 目前的标签：<Tag>,类型：<class 'api.models.tag.Tag'>
+2025-09-23 23:22:05,935 - tortoise.db_client - DEBUG - client.py:182 - INSERT INTO `t_agent_tag` (`agent_id`,`tag_id`) VALUES (%s,%s): [34, 2]
+2025-09-23 23:22:06,012 - root - INFO - agent_router.py:81 - 添加标签成功
+2025-09-23 23:22:06,046 - tortoise.db_client - DEBUG - client.py:207 - SELECT `t_agent_cards`.`id` `id`,`t_agent_cards`.`name` `name`,`t_agent_cards`.`description` `description`,`t_agent_cards`.`prompt` `prompt`,`t_agent_cards`.`image` `image`,`t_agent_cards__category`.`id` `category_id`,`t_agent_cards__category`.`name` `style_name` FROM `t_agent_cards` LEFT OUTER JOIN `t_category` `t_agent_cards__category` ON `t_agent_cards__category`.`id`=`t_agent_cards`.`category_id`: []
+2025-09-23 23:22:06,128 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 1, 'name': '哈利波特', 'description': '哈利波特风格聊天助手', 'prompt': None, 'image': None, 'category_id': None, 'style_name': None, 'tags': []}
+2025-09-23 23:22:06,129 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [1]
+2025-09-23 23:22:06,206 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 7, 'name': '111111111111111111', 'description': '111111111111111', 'prompt': '1111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,206 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [7]
+2025-09-23 23:22:06,279 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 8, 'name': '狼人杀', 'description': '狼人杀风格助手', 'prompt': '1111111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,280 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [8]
+2025-09-23 23:22:06,350 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 9, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,351 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [9]
+2025-09-23 23:22:06,422 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 10, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,424 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [10]
+2025-09-23 23:22:06,492 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 11, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,492 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [11]
+2025-09-23 23:22:06,569 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 12, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,571 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [12]
+2025-09-23 23:22:06,643 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 13, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,645 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [13]
+2025-09-23 23:22:06,728 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 14, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,730 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [14]
+2025-09-23 23:22:06,802 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 15, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,804 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [15]
+2025-09-23 23:22:06,880 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 16, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,880 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [16]
+2025-09-23 23:22:06,953 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 17, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:06,954 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [17]
+2025-09-23 23:22:07,032 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 18, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,032 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [18]
+2025-09-23 23:22:07,116 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 19, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,116 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [19]
+2025-09-23 23:22:07,191 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:22:07,265 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:22:07,265 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 20, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,270 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [20]
+2025-09-23 23:22:07,345 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:22:07,415 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:22:07,415 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 21, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,415 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [21]
+2025-09-23 23:22:07,479 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:22:07,543 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:22:07,543 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 22, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,544 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [22]
+2025-09-23 23:22:07,602 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:22:07,691 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:22:07,691 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 23, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,692 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [23]
+2025-09-23 23:22:07,760 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:22:07,822 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:22:07,822 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 24, 'name': '可爱的小娃', 'description': '可爱可爱！', 'prompt': '顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶11111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,824 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [24]
+2025-09-23 23:22:07,884 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [1, 1]
+2025-09-23 23:22:07,955 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '温馨'}
+2025-09-23 23:22:07,955 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 25, 'name': '11111111111111111111', 'description': '11111111', 'prompt': '111111111111111111111111111', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:07,957 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [25]
+2025-09-23 23:22:08,022 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 26, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,022 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [26]
+2025-09-23 23:22:08,090 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 27, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,091 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [27]
+2025-09-23 23:22:08,156 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 28, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,163 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [28]
+2025-09-23 23:22:08,231 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 29, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,232 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [29]
+2025-09-23 23:22:08,300 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 30, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,300 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [30]
+2025-09-23 23:22:08,362 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 31, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,362 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [31]
+2025-09-23 23:22:08,427 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 32, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,429 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [32]
+2025-09-23 23:22:08,496 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 33, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,497 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [33]
+2025-09-23 23:22:08,567 - root - INFO - agent_router.py:23 - 依次遍历智能体中{'id': 34, 'name': '2222222222222222222', 'description': '222222222222', 'prompt': '222222222222222222222222222', 'image': None, 'category_id': 1, 'style_name': '科幻', 'tags': []}
+2025-09-23 23:22:08,567 - tortoise.db_client - DEBUG - client.py:207 - SELECT `tag_id` `tag_id` FROM `t_agent_tag` WHERE `agent_id`=%s: [34]
+2025-09-23 23:22:08,637 - tortoise.db_client - DEBUG - client.py:207 - SELECT `name` `name` FROM `t_tag` WHERE `id`=%s LIMIT %s: [2, 1]
+2025-09-23 23:22:08,701 - root - INFO - agent_router.py:28 - 当前智能体的获取标签中{'name': '恐怖'}
+2025-09-23 23:22:46,572 - tortoise.db_client - DEBUG - client.py:153 - Closed connection None with params: {'host': '8.155.16.137', 'port': 3306, 'user': 'root', 'db': 'agent', 'autocommit': True, 'charset': 'utf8mb4', 'minsize': 1, 'maxsize': 5, 'sql_mode': 'STRICT_TRANS_TABLES'}
+2025-09-23 23:22:46,572 - tortoise - INFO - __init__.py:171 - Tortoise-ORM shutdown

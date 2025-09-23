@@ -1,24 +1,32 @@
 import uvicorn
 import os
-from fastapi import FastAPI
+import logging
+from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from tortoise.contrib.fastapi import register_tortoise
-from fastapi import FastAPI, Request,status
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from dotenv import load_dotenv
+from logging_config import setup_logging
 from api.schemas.response import ResponseModel
 from api.router import (
     agent_router,
     user_router,
-    auth_router
+    auth_router,
+    tag_router,
+    category_router
 )
 load_dotenv()
+setup_logging()
+logger = logging.getLogger(__name__)
+logger.info("风格智能体助手启动完成")
 app = FastAPI(description='特色风格智能体接口')
 app.include_router(auth_router, prefix="/api", tags=["auth"])
 app.include_router(agent_router, prefix="/api", tags=["agent"])
 app.include_router(user_router, prefix="/api", tags=["user"])
+app.include_router(tag_router, prefix="/api", tags=["tag"])
+app.include_router(category_router, prefix="/api", tags=["category"])
 
 # CORS
 app.add_middleware(

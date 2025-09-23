@@ -11,7 +11,7 @@ class VisibilityEnum(str, Enum):
     private = "private"
     team = "team"
 class AgentCard(models.Model):
-    id = fields.BigIntField(pk=True)
+    id = fields.BigIntField(pk=True, generated=True)
     name = fields.CharField(max_length=100)
     description = fields.TextField(null=True)
     prompt = fields.TextField()
@@ -21,16 +21,12 @@ class AgentCard(models.Model):
     category = fields.ForeignKeyField(
         "models.Category", related_name="agents", null=True
     )
-    tag = fields.ForeignKeyField(
-        "models.Tag", related_name="agents", null=True
-    )
-    
+    temperature = fields.DecimalField(max_digits=3, decimal_places=2, default=0.70)
     version = fields.CharField(max_length=20, default="1.0")
     status = fields.CharEnumField(enum_type=StatusEnum, default=StatusEnum.active)
     visibility = fields.CharEnumField(enum_type=VisibilityEnum, default=VisibilityEnum.public)
     example_inputs = fields.JSONField(null=True)
     example_outputs = fields.JSONField(null=True)
-    default_temperature = fields.DecimalField(max_digits=3, decimal_places=2, default=0.70)
     max_tokens = fields.IntField(default=2048)
     tool_bindings = fields.JSONField(null=True)
     author_id = fields.BigIntField(null=True)

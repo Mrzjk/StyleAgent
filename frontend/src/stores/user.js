@@ -5,9 +5,14 @@ import api from '@/utils/api'
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: null,        // 用户信息
-    isLoggedIn: false, // 登录状态
+    isLoggedIn: false, // 登录状态1
     loading: false
   }),
+  
+  getters: {
+    // 检查是否已登录
+    isAuthenticated: (state) => !!state.isLoggedIn
+  },
   actions: {
     // 登录
     async login(credentials) {
@@ -16,6 +21,7 @@ export const useUserStore = defineStore("user", {
         const res = await api.post("/auth/login", credentials, { withCredentials: true })
         if (res.data.code === 200) {
           this.user = res.data.data
+          
           this.isLoggedIn = true
           return { success: true }
         }
@@ -66,6 +72,17 @@ export const useUserStore = defineStore("user", {
       this.user = null
       this.isLoggedIn = false
       // 可调用后端登出接口清理 cookie
+    },
+    
+    // 初始化应用时检查登录状态
+    async initAuth() {
+      try {
+        await this.fetchCurrentUser()
+      } catch (error) {
+        // 如果获取用户信息失败，说明未登录
+        this.user = null
+        this.isLoggedIn = false
+      }
     }
   }
 })

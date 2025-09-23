@@ -32,9 +32,8 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response?.status === 401) {
-      // token过期，清除本地存储并跳转到登录页
-      localStorage.removeItem('token')
-      window.location.href = '/login'
+      // 401错误不自动跳转，让组件自己处理
+      console.log('API请求返回401，需要重新登录')
     }
     return Promise.reject(error)
   }

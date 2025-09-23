@@ -8,7 +8,7 @@ from datetime import timedelta
 
 from api.models import User
 from api.utils import get_password_hash, verify_password
-from api.utils import create_access_token
+from api.utils import create_access_token, get_current_user
 from api.schemas import ResponseModel,UserIn
 from api.schemas import Token, TokenData,FormData
 
@@ -24,14 +24,14 @@ async def login(form_data: FormData):
         return HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect username or password")
     minutes = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRE_MINUTES'))
     access_token_expires = timedelta(minutes=minutes)*60*24
-    sub = TokenData(username=user['username'],email=user['email'])
+    sub = TokenData(id=user['id'],username=user['username'])
     access_token = await create_access_token(data=sub.model_dump(), expires_delta=access_token_expires)
     content = ResponseModel(
         code=status.HTTP_200_OK,
         msg="Login success",
         data={
             "username": user['username'],
-            "email": user['email'],
+            "id": user['id'],
             "expires_in": minutes * 60
         }
     ).model_dump()
@@ -68,3 +68,14 @@ async def register(user: UserIn):
         "username": user_obj.username,
         "email": user_obj.email
     }, msg="注册成功")
+
+@auth_router.get("/me")
+async def get_current_user_info(current_user: TokenData = Depends(get_current_user)):
+    """获取当前用户信息"""
+    return ResponseModel(
+        data={
+            "username": current_user.username,
+            "id": current_user.id
+        },
+        msg="获取用户信息成功"
+    )

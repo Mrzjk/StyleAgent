@@ -26,18 +26,17 @@
       />
     </el-form-item>
 
-    <el-form-item label="智能体风格" prop="style">
-      <el-select v-model="form.style" placeholder="请选择智能体风格" style="width: 100%">
+    <el-form-item label="智能体类别" prop="category">
+      <el-select v-model="form.category" placeholder="请选择智能体类别" style="width: 100%">
         <el-option
-          v-for="style in agentStyles"
-          :key="style.value"
-          :label="style.label"
-          :value="style.value"
+          v-for="category in categories"
+          :key="category.id"
+          :label="category.name"
+          :value="category.id"
         >
           <div class="style-option">
-            <el-icon><component :is="style.icon" /></el-icon>
-            <span>{{ style.label }}</span>
-            <span class="style-desc">{{ style.description }}</span>
+            <span>{{ category.name }}</span>
+            <span class="style-desc">{{ category.description }}</span>
           </div>
         </el-option>
       </el-select>
@@ -53,25 +52,37 @@
         style="width: 100%"
       >
         <el-option
-          v-for="tag in commonTags"
-          :key="tag"
-          :label="tag"
-          :value="tag"
+          v-for="tag in tagList"
+          :key="tag.id"
+          :label="tag.name"
+          :value="tag.name"
         />
       </el-select>
     </el-form-item>
 
-    <el-form-item label="系统提示" prop="systemPrompt">
-      <el-input 
-        v-model="form.systemPrompt" 
-        type="textarea" 
-        :rows="4"
-        placeholder="请输入系统提示词，定义智能体的行为模式"
-        maxlength="500"
-        show-word-limit
-      />
-    </el-form-item>
 
+  <el-form-item label="系统提示" prop="systemPrompt" style="position: relative;">
+    <el-input
+      v-model="form.systemPrompt"
+      type="textarea"
+      :rows="4"
+      placeholder="请输入系统提示词..."
+      maxlength="600"
+      show-word-limit
+    />
+    <!-- 绝对定位按钮 -->
+  <el-tooltip content="优化提示词" placement="top">
+    <el-button
+      icon="Star"
+      type="text"
+      size="small"
+      :loading="loadingOptimize"
+      @click="optimizeSystemPrompt"
+      style="position: absolute; right: 10px; bottom: 10px; z-index: 10;"
+    />
+  </el-tooltip>
+
+</el-form-item>
     <el-form-item label="温度设置" prop="temperature">
       <el-slider
         v-model="form.temperature"
@@ -95,123 +106,109 @@
   </el-form>
 </template>
 
-<script>
-import { ref, reactive } from 'vue'
+<script setup>
+import { ref, reactive, onMounted, computed } from 'vue'
 import { ElMessage } from 'element-plus'
-import { User, Star, Setting, ChatDotRound } from '@element-plus/icons-vue'
-import { useAgentsStore } from '../stores/agents'
+import { useAgentsStore } from '@/stores/agent'
+import { useTagsStore } from '@/stores/tag'
+import { useAgentCategories } from '@/stores/category'
 
-export default {
-  name: 'CreateAgentForm',
-  emits: ['success', 'cancel'],
-  setup(props, { emit }) {
-    const agentsStore = useAgentsStore()
-    const formRef = ref()
-    const loading = ref(false)
+// 接收父组件事件
+const emit = defineEmits(['success', 'cancel'])
 
-    const form = reactive({
-      name: '',
-      description: '',
-      style: '',
-      tags: [],
-      systemPrompt: '',
-      temperature: 0.7
-    })
+const agentsStore = useAgentsStore()
+const tagsStore = useTagsStore()
+const cateStore = useAgentCategories()
+const formRef = ref()
+const loading = ref(false)
 
-    const agentStyles = [
-      {
-        value: 'assistant',
-        label: '助手型',
-        description: '专业、高效、准确',
-        icon: User
-      },
-      {
-        value: 'creative',
-        label: '创意型',
-        description: '富有想象力、创新思维',
-        icon: Star
-      },
-      {
-        value: 'technical',
-        label: '技术型',
-        description: '逻辑清晰、技术专业',
-        icon: Setting
-      },
-      {
-        value: 'friendly',
-        label: '友好型',
-        description: '亲切、幽默、易沟通',
-        icon: ChatDotRound
-      }
-    ]
+const form = reactive({
+  name: '',
+  description: '',
+  category: '',
+  tags: [],
+  systemPrompt: '',
+  temperature: 0.7
+})
 
-    const commonTags = [
-      '编程助手', '写作助手', '学习助手', '翻译助手', 
-      '创意助手', '技术顾问', '生活助手', '商务助手'
-    ]
+const rules = {
+  name: [
+    { required: true, message: '请输入智能体名称', trigger: 'blur' },
+    { min: 2, max: 20, message: '名称长度在2到20个字符', trigger: 'blur' }
+  ],
+  description: [
+    { required: true, message: '请输入智能体描述', trigger: 'blur' },
+    { min: 5, max: 200, message: '描述长度在5到200个字符', trigger: 'blur' }
+  ],
+  category: [
+    { required: true, message: '请选择智能体类别', trigger: 'change' }
+  ],
+  tags: [
+    { required: true, message: '请至少选择一个标签', trigger: 'change' }
+  ],
+  systemPrompt: [
+    { required: true, message: '请输入系统提示词', trigger: 'blur' },
+    { min: 20, max: 600, message: '提示词长度在20到600个字符', trigger: 'blur' }
+  ]
+}
 
-    const rules = {
-      name: [
-        { required: true, message: '请输入智能体名称', trigger: 'blur' },
-        { min: 2, max: 20, message: '名称长度在2到20个字符', trigger: 'blur' }
-      ],
-      description: [
-        { required: true, message: '请输入智能体描述', trigger: 'blur' },
-        { min: 10, max: 200, message: '描述长度在10到200个字符', trigger: 'blur' }
-      ],
-      style: [
-        { required: true, message: '请选择智能体风格', trigger: 'change' }
-      ],
-      tags: [
-        { required: true, message: '请至少选择一个标签', trigger: 'change' }
-      ],
-      systemPrompt: [
-        { required: true, message: '请输入系统提示词', trigger: 'blur' },
-        { min: 20, max: 500, message: '提示词长度在20到500个字符', trigger: 'blur' }
-      ]
+const formatTemperature = (value) => {
+  if (value <= 0.3) return `保守 (${value})`
+  if (value <= 0.7) return `平衡 (${value})`
+  return `创新 (${value})`
+}
+
+const handleSubmit = async () => {
+  if (!formRef.value) return
+
+  try {
+    await formRef.value.validate()  // Promise 风格
+    loading.value = true
+
+    const payload = {
+      name: form.name,
+      description: form.description,
+      category: form.category,
+      tags: form.tags,
+      prompt: form.systemPrompt,
+      temperature: form.temperature
     }
 
-    const formatTemperature = (value) => {
-      if (value <= 0.3) return '保守 (0.3)'
-      if (value <= 0.7) return '平衡 (0.7)'
-      return '创新 (1.0)'
+    console.log('提交 payload:', payload)
+    const result = await agentsStore.createAgent(payload)
+    loading.value = false
+
+    if (result.success) {
+      emit('success')
+    } else {
+      ElMessage.error(result.message)
     }
-
-    const handleSubmit = async () => {
-      if (!formRef.value) return
-
-      await formRef.value.validate(async (valid) => {
-        if (valid) {
-          loading.value = true
-          const result = await agentsStore.createAgent(form)
-          loading.value = false
-
-          if (result.success) {
-            emit('success')
-          } else {
-            ElMessage.error(result.message)
-          }
-        }
-      })
-    }
-
-    const handleCancel = () => {
-      emit('cancel')
-    }
-
-    return {
-      formRef,
-      form,
-      rules,
-      loading,
-      agentStyles,
-      commonTags,
-      formatTemperature,
-      handleSubmit,
-      handleCancel
-    }
+  } catch (err) {
+    console.log('表单验证未通过', err)
   }
 }
+
+const handleCancel = () => {
+  emit('cancel')
+}
+
+// 使用 store 中的响应式数据
+const categories = computed(() => cateStore.categories || [])
+const tagList = computed(() => tagsStore.tags || [])
+
+onMounted(async () => {
+  try {
+    await cateStore.getAgentCategories()
+  } catch (error) {
+    console.error('获取分类失败:', error)
+  }
+
+  try {
+    await tagsStore.getTags()
+  } catch (error) {
+    console.error('获取标签失败:', error)
+  }
+})
 </script>
 
 <style scoped>

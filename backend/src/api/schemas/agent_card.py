@@ -4,3 +4,10 @@ class AgentCardIn(BaseModel):
     description: str
     prompt: str
     image: str
+class AgentCardFormat(BaseModel):
+    name:str
+    description:str
+    category:int
+    tags:list[str]
+    prompt:str
+    temperature:float

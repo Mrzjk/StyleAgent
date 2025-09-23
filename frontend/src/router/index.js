@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useUserStore } from '../stores/user'
+import { useUserStore } from '@/stores/user'
 
 const routes = [
   {
@@ -36,16 +36,39 @@ const router = createRouter({
 })
 
 //路由守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore()
-  console.log('导航守卫触发', to.fullPath)
-  console.log('用户登录状态', userStore.isLoggedIn)
-  if (to.meta.requiresAuth && !userStore.isLoggedIn) {
-    // 如果路由需要登录，且用户未登录，就跳到 /login
-    next('/login')
-  } else {
-    next()
+  
+  // 如果访问需要认证的页面，先检查登录状态
+  if (to.meta.requiresAuth) {
+    // 如果store中还没有登录状态，尝试从后端获取
+    if (!userStore.isLoggedIn) {
+      try {
+        await userStore.fetchCurrentUser()
+      } catch (error) {
+        // 获取用户信息失败，跳转到登录页
+        console.log('未登录，跳转到登录页')
+        console.log(error)
+        next('/login')
+        return
+      }
+    }
+    
+    // 检查登录状态
+    if (!userStore.isLoggedIn) {
+      console.log('用户未登录，跳转到登录页')
+      next('/login')
+      return
+    }
   }
+  
+  // 如果已登录用户访问登录页，跳转到仪表板
+  if ((to.name === 'Login' || to.name === 'Register') && userStore.isLoggedIn) {
+    next('/dashboard')
+    return
+  }
+  
+  next()
 })
 
 

@@ -85,7 +85,7 @@ const handleLogin = async () => {
       ElMessage.success('登录成功')
       router.push('/dashboard') // 登录成功跳转
     } else {
-      ElMessage.error(result.message)
+      ElMessage.error('登录失败')
     }
   } catch (err) {
     ElMessage.error('登录失败')

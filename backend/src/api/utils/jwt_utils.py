@@ -1,10 +1,11 @@
 import jwt
 import os
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, status, Request
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jwt.exceptions import InvalidTokenError
 from typing import Union
-
+from fastapi import HTTPException, status
+from jwt import decode, InvalidTokenError
 from api.schemas import TokenData
 from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
@@ -21,22 +22,45 @@ async def create_access_token(data: dict, expires_delta: Union[timedelta, None] 
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
-async def parse_token(token: str) -> dict:
+
+
+async def parse_token(token: str) -> TokenData:
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload : TokenData = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username = payload.get("sub")
-        email = payload.get("email")
-        if  username is None or email is None:
+        payload: dict = decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username = payload.get("username")
+        user_id = payload.get("id")
+        print(payload)
+        if username is None or user_id is None:
             raise credentials_exception
-        token_data = TokenData(username=username,email=email)
+        token_data = TokenData(username=username, id=user_id)
         return token_data
     except InvalidTokenError:
         raise credentials_exception
+
     
-async def get_current_user(token: str = Depends(oauth2_scheme)) -> TokenData:
+async def get_current_user(request: Request) -> TokenData:
+    """
+    从cookie中获取token并验证用户身份
+    """
+    # 首先尝试从cookie中获取token
+    token = request.cookies.get("access_token")
+    
+    # 如果cookie中没有token，尝试从Authorization头部获取
+    if not token:
+        auth_header = request.headers.get("Authorization")
+        if auth_header and auth_header.startswith("Bearer "):
+            token = auth_header.split(" ")[1]
+    
+    if not token:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
     return await parse_token(token)

@@ -4,7 +4,7 @@
       <div class="header-content">
         <h1>AI智能体平台</h1>
         <div class="user-info">
-          <span>欢迎，{{ userStore.userInfo?.username }}</span>
+          <span>欢迎，{{ userStore.user?.username }}</span>
           <el-button type="text" @click="handleLogout">退出登录</el-button>
         </div>
       </div>
@@ -29,7 +29,7 @@
           >
             <div class="agent-avatar">
               <el-icon :size="40">
-                <component :is="getAgentIcon(agent.style)" />
+                <component :is="getAgentIcon(agent.style_name)" />
               </el-icon>
             </div>
             <div class="agent-info">
@@ -82,7 +82,7 @@ import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, User, Star, Setting, ChatDotRound } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
-import { useAgentsStore } from '@/stores/agents'
+import { useAgentsStore } from '@/stores/agent'
 import CreateAgentForm from '@/components/CreateAgentForm.vue'
 
 // Router 和 Store
@@ -155,8 +155,14 @@ const handleCloseDialog = (done) => {
 // 页面初始化
 onMounted(async () => {
   loading.value = true
-  await agentsStore.fetchAgents()
-  loading.value = false
+  try {
+    await agentsStore.fetchAgents()
+  } catch (error) {
+    console.error('获取智能体列表失败:', error)
+    // 如果是401错误，路由守卫会处理跳转
+  } finally {
+    loading.value = false
+  }
 })
 </script>
 

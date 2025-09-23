@@ -1,7 +1,7 @@
 from tortoise import fields, models
 
 class User(models.Model):
-    id = fields.BigIntField(pk=True)
+    id = fields.BigIntField(pk=True, generated=True)
     username = fields.CharField(max_length=50, unique=True)
     email = fields.CharField(max_length=100, unique=True, null=True)
     phone = fields.CharField(max_length=20, unique=True, null=True)

@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from .agent_card import AgentCard
 
 class Category(models.Model):
-    id = fields.IntField(pk=True)
+    id = fields.IntField(pk=True, generated=True)
     name = fields.CharField(max_length=255, null=True)
     description = fields.CharField(max_length=255, null=True)
     create_time = fields.DatetimeField(null=True)
