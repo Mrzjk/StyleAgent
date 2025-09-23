@@ -10,11 +10,11 @@ from api.models import User
 from api.utils import get_password_hash, verify_password
 from api.utils import create_access_token
 from api.schemas import ResponseModel,UserIn
-from api.schemas import Token, TokenData
+from api.schemas import Token, TokenData,FormData
 
-auth_router = APIRouter(prefix="auth")
+auth_router = APIRouter(prefix="/auth")
 @auth_router.post("/login")
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+async def login(form_data: FormData):
     username = form_data.username
     user = await User.filter(username=username).first().values("id","username","password_hash","email")
     if user is None:
@@ -64,4 +64,7 @@ async def register(user: UserIn):
     except IntegrityError:
         return ResponseModel(code=400, msg="用户名或邮箱已存在")
 
-    return ResponseModel(data=user.model_dump(), msg="注册成功")
+    return ResponseModel(data={
+        "username": user_obj.username,
+        "email": user_obj.email
+    }, msg="注册成功")

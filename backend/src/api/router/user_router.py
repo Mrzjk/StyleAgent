@@ -7,13 +7,13 @@ from api.schemas import ResponseModel
 from api.utils import get_password_hash,verify_password
 from api.utils import get_current_user
 from api.models import User
-user_router = APIRouter(prefix="user",dependencies=[Depends(get_current_user)])
+user_router = APIRouter(prefix="/user",dependencies=[Depends(get_current_user)])
 @user_router.get("/")
 async def all_users():
     data = await User.all().values("id","username","email")
     return ResponseModel(
         data=data,
-        message="获取用户信息成功"
+        msg="获取用户信息成功"
 )
 @user_router.get("/{user_id}")
 async def get_user(user_id:int):
@@ -21,8 +21,8 @@ async def get_user(user_id:int):
     data = await User.filter(id=user_id).values("id","username","email")
     return ResponseModel(
         data=data,
-        message="获取用户信息成功"
-)
+        msg="获取用户信息成功"
+    )
 @user_router.post("/")
 async def create_user(user:UserIn):
     """创建用户"""
@@ -32,8 +32,8 @@ async def create_user(user:UserIn):
     user = await User.create(**user_data)
     return ResponseModel(
         data=user,
-        message="创建用户成功"
-)
+        msg="创建用户成功"
+    )
 @user_router.put("/{user_id}")
 async def update_user(user_id:int ,user:UserIn):
     
@@ -49,6 +49,6 @@ async def delete_user(user_id:int):
     deleted_count = await User.delete().where(User.id==user_id).gino.first()
     return ResponseModel(
         data=deleted_count,
-        message="删除用户成功"
+        msg="删除用户成功"
     )
     

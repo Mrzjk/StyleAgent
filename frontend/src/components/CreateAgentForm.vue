@@ -98,7 +98,7 @@
 <script>
 import { ref, reactive } from 'vue'
 import { ElMessage } from 'element-plus'
-import { User, Star, Setting, ChatDotRound, Robot } from '@element-plus/icons-vue'
+import { User, Star, Setting, ChatDotRound } from '@element-plus/icons-vue'
 import { useAgentsStore } from '../stores/agents'
 
 export default {

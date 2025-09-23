@@ -13,14 +13,15 @@
         class="login-form"
         @submit.prevent="handleLogin"
       >
-       <el-form-item prop="username">
+        <el-form-item prop="username">
           <el-input
             v-model="loginForm.username"
             placeholder="请输入用户名"
             size="large"
-            prefix-icon="Message"
+            prefix-icon="User"
           />
         </el-form-item>
+        
         <el-form-item prop="password">
           <el-input
             v-model="loginForm.password"
@@ -52,65 +53,44 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import axios from 'axios'
+import { useUserStore } from '@/stores/user'
 
-export default {
-  name: 'Login',
-  setup() {
-    const router = useRouter()
-  
-    const loginFormRef = ref()
-    const loading = ref(false)
-    
-    const loginForm = reactive({
-      username: '',
-      password: ''
-    })
-    
-    const rules = {
-      username: [
-        { required: true, message: '请输入用户名', trigger: 'blur' }
-      ],
+const userStore = useUserStore() // 获取 Pinia store
+const router = useRouter()
 
-      password: [
-        { required: true, message: '请输入密码', trigger: 'blur' },
-        { min: 4, message: '密码长度不能少于4位', trigger: 'blur' }
-      ]
+const loginFormRef = ref()
+const loading = ref(false)
+
+const loginForm = reactive({
+  username: '',
+  password: ''
+})
+
+const handleLogin = async () => {
+  if (!loginFormRef.value) return
+
+  // 表单验证
+  const valid = await loginFormRef.value.validate()
+  if (!valid) return
+
+  loading.value = true
+  try {
+    // 调用 Pinia store 的 login 方法
+    const result = await userStore.login(loginForm)
+    if (result.success) {
+      ElMessage.success('登录成功')
+      router.push('/dashboard') // 登录成功跳转
+    } else {
+      ElMessage.error(result.message)
     }
-    
-    const handleLogin = async () => {
-      if (!loginFormRef.value) return
-      
-      try {
-          const valid = await loginFormRef.value.validate()
-          if (!valid) return
-          loading.value = true
-          const result = await axios.post('/api/auth/login', loginForm)
-          if (result.data.code === 200) {
-            ElMessage.success('登录成功')
-            router.push('/dashboard')
-          } else {
-            ElMessage.error(result.data.message)
-          }
-        } catch (err) {
-          // 表单验证失败会抛异常，可以不处理
-          console.log('表单验证失败', err)
-        } finally {
-          loading.value = false
-      }
-    }
-    
-    return {
-      loginFormRef,
-      loginForm,
-      rules,
-      loading,
-      handleLogin
-    }
+  } catch (err) {
+    ElMessage.error('登录失败')
+  } finally {
+    loading.value = false
   }
 }
 </script>

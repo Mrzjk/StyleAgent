@@ -9,23 +9,23 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue')
+    component: () => import('@/views/Login.vue')
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('../views/Register.vue')
+    component: () => import('@/views/Register.vue')
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: () => import('../views/Dashboard.vue'),
+    component: () => import('@/views/Dashboard.vue'),
     meta: { requiresAuth: true }
   },
   {
     path: '/chat/:agentId',
     name: 'Chat',
-    component: () => import('../views/Chat.vue'),
+    component: () => import('@/views/Chat.vue'),
     meta: { requiresAuth: true }
   },
 ]
@@ -35,17 +35,18 @@ const router = createRouter({
   routes
 })
 
-// 路由守卫
-// router.beforeEach((to, from, next) => {
-//   const userStore = useUserStore()
-  
-//   if (to.meta.requiresAuth && !userStore.isLoggedIn) {
-//     next('/login')
-//   } else if ((to.name === 'Login' || to.name === 'Register') && userStore.isLoggedIn) {
-//     next('/dashboard')
-//   } else {
-//     next()
-//   }
-// })
+//路由守卫
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore()
+  console.log('导航守卫触发', to.fullPath)
+  console.log('用户登录状态', userStore.isLoggedIn)
+  if (to.meta.requiresAuth && !userStore.isLoggedIn) {
+    // 如果路由需要登录，且用户未登录，就跳到 /login
+    next('/login')
+  } else {
+    next()
+  }
+})
+
 
 export default router

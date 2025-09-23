@@ -55,7 +55,7 @@
         </div>
 
         <div v-if="agentsStore.agents.length === 0 && !loading" class="empty-state">
-          <el-icon :size="80" color="#ccc"><Robot /></el-icon>
+          
           <h3>还没有智能体</h3>
           <p>创建您的第一个智能体，开始智能对话体验</p>
           <el-button type="primary" @click="showCreateDialog = true">
@@ -76,100 +76,88 @@
     </el-dialog>
   </div>
 </template>
-
-<script>
+<script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Plus, Robot, User, Star, Setting, ChatDotRound } from '@element-plus/icons-vue'
-import { useUserStore } from '../stores/user'
-import { useAgentsStore } from '../stores/agents'
-import CreateAgentForm from '../components/CreateAgentForm.vue'
+import { Plus, User, Star, Setting, ChatDotRound } from '@element-plus/icons-vue'
+import { useUserStore } from '@/stores/user'
+import { useAgentsStore } from '@/stores/agents'
+import CreateAgentForm from '@/components/CreateAgentForm.vue'
 
-export default {
-  name: 'Dashboard',
-  components: {
-    CreateAgentForm
-  },
-  setup() {
-    const router = useRouter()
-    const userStore = useUserStore()
-    const agentsStore = useAgentsStore()
-    const loading = ref(false)
-    const showCreateDialog = ref(false)
+// Router 和 Store
+const router = useRouter()
+const userStore = useUserStore()
+const agentsStore = useAgentsStore()
 
-    const agentIcons = {
-      'assistant': User,
-      'creative': Star,
-      'technical': Setting,
-      'friendly': ChatDotRound,
-      'default': Robot
-    }
+// 本地状态
+const loading = ref(false)
+const showCreateDialog = ref(false)
 
-    const getAgentIcon = (style) => {
-      return agentIcons[style] || agentIcons.default
-    }
+// 智能体图标映射
+const agentIcons = {
+  'assistant': User,
+  'creative': Star,
+  'technical': Setting,
+  'friendly': ChatDotRound,
+}
 
-    const getTagType = (tag) => {
-      const types = ['', 'success', 'warning', 'danger', 'info']
-      return types[tag.length % types.length]
-    }
+// 获取智能体图标
+const getAgentIcon = (style) => {
+  return agentIcons[style] || agentIcons.default
+}
 
-    const selectAgent = (agent) => {
-      agentsStore.setCurrentAgent(agent)
-    }
+// 标签类型
+const getTagType = (tag) => {
+  const types = ['', 'success', 'warning', 'danger', 'info']
+  return types[tag.length % types.length]
+}
 
-    const startChat = (agent) => {
-      agentsStore.setCurrentAgent(agent)
-      router.push(`/chat/${agent.id}`)
-    }
+// 选择智能体
+const selectAgent = (agent) => {
+  agentsStore.setCurrentAgent(agent)
+}
 
-    const handleLogout = async () => {
-      try {
-        await ElMessageBox.confirm('确定要退出登录吗？', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        })
-        userStore.logout()
-        ElMessage.success('已退出登录')
-        router.push('/login')
-      } catch {
-        // 用户取消
-      }
-    }
+// 开始聊天
+const startChat = (agent) => {
+  agentsStore.setCurrentAgent(agent)
+  router.push(`/chat/${agent.id}`)
+}
 
-    const handleCreateSuccess = () => {
-      showCreateDialog.value = false
-      ElMessage.success('智能体创建成功')
-      agentsStore.fetchAgents()
-    }
-
-    const handleCloseDialog = (done) => {
-      done()
-    }
-
-    onMounted(async () => {
-      loading.value = true
-      await agentsStore.fetchAgents()
-      loading.value = false
+// 登出
+const handleLogout = async () => {
+  try {
+    await ElMessageBox.confirm('确定要退出登录吗？', '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
     })
-
-    return {
-      userStore,
-      agentsStore,
-      loading,
-      showCreateDialog,
-      getAgentIcon,
-      getTagType,
-      selectAgent,
-      startChat,
-      handleLogout,
-      handleCreateSuccess,
-      handleCloseDialog
-    }
+    userStore.logout()
+    ElMessage.success('已退出登录')
+    router.push('/login')
+  } catch {
+    // 用户取消
   }
 }
+
+// 创建智能体成功回调
+const handleCreateSuccess = () => {
+  showCreateDialog.value = false
+  ElMessage.success('智能体创建成功')
+  agentsStore.fetchAgents()
+}
+
+// 关闭对话框
+const handleCloseDialog = (done) => {
+  done()
+}
+
+// 页面初始化
+onMounted(async () => {
+  loading.value = true
+  await agentsStore.fetchAgents()
+  loading.value = false
+})
 </script>
 
 <style scoped>

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios from 'axios'
+import api from '@/utils/api'
 
 export const useAgentsStore = defineStore('agents', {
   state: () => ({
@@ -15,7 +15,7 @@ export const useAgentsStore = defineStore('agents', {
   actions: {
     async fetchAgents() {
       try {
-        const response = await axios.get('/api/agents')
+        const response = await api.get('/agent/')
         this.agents = response.data
       } catch (error) {
         console.error('获取智能体列表失败:', error)

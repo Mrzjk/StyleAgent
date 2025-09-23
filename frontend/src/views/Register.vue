@@ -73,87 +73,83 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { useUserStore } from '../stores/user'
 
-export default {
-  name: 'Register',
-  setup() {
-    const router = useRouter()
-    const userStore = useUserStore()
-    const registerFormRef = ref()
-    const loading = ref(false)
-    
-    const registerForm = reactive({
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    })
-    
-    const validateConfirmPassword = (rule, value, callback) => {
-      if (value !== registerForm.password) {
-        callback(new Error('两次输入的密码不一致'))
-      } else {
-        callback()
-      }
+import { useUserStore } from '@/stores/user'
+
+const router = useRouter()
+const userStore = useUserStore()
+const registerFormRef = ref()
+const loading = ref(false)
+
+const registerForm = reactive({
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+})
+
+// 验证确认密码
+const validateConfirmPassword = (rule, value, callback) => {
+  if (value !== registerForm.password) {
+    callback(new Error('两次输入的密码不一致'))
+  } else {
+    callback()
+  }
+}
+
+// 表单验证规则
+const rules = {
+  username: [
+    { required: true, message: '请输入用户名', trigger: 'blur' },
+    { min: 2, max: 20, message: '用户名长度在2到20个字符', trigger: 'blur' }
+  ],
+  email: [
+    { required: true, message: '请输入邮箱', trigger: 'blur' },
+    { type: 'email', message: '请输入正确的邮箱格式', trigger: 'blur' }
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 4, message: '密码长度不能少于4位', trigger: 'blur' }
+  ],
+  confirmPassword: [
+    { required: true, message: '请确认密码', trigger: 'blur' },
+    { validator: validateConfirmPassword, trigger: 'blur' }
+  ]
+}
+
+// 提交注册
+const handleRegister = async () => {
+  if (!registerFormRef.value) return
+
+  const valid = await registerFormRef.value.validate()
+  if (!valid) return
+
+  loading.value = true
+  try {
+    const res = await userStore.register(registerForm)
+    if (res.success) {
+      // 可以选择注册成功后直接登录到 store
+      userStore.user = res.data
+      userStore.isLoggedIn = true
+
+      ElMessage.success(res.message || '注册成功')
+      router.push('/login')
+    } else {
+      ElMessage.error(res.message || '注册失败')
     }
-    
-    const rules = {
-      username: [
-        { required: true, message: '请输入用户名', trigger: 'blur' },
-        { min: 2, max: 20, message: '用户名长度在2到20个字符', trigger: 'blur' }
-      ],
-      email: [
-        { required: true, message: '请输入邮箱', trigger: 'blur' },
-        { type: 'email', message: '请输入正确的邮箱格式', trigger: 'blur' }
-      ],
-      password: [
-        { required: true, message: '请输入密码', trigger: 'blur' },
-        { min: 6, message: '密码长度不能少于6位', trigger: 'blur' }
-      ],
-      confirmPassword: [
-        { required: true, message: '请确认密码', trigger: 'blur' },
-        { validator: validateConfirmPassword, trigger: 'blur' }
-      ]
-    }
-    
-    const handleRegister = async () => {
-      if (!registerFormRef.value) return
-      
-      await registerFormRef.value.validate(async (valid) => {
-        if (valid) {
-          loading.value = true
-          const result = await userStore.register({
-            username: registerForm.username,
-            email: registerForm.email,
-            password: registerForm.password
-          })
-          loading.value = false
-          
-          if (result.success) {
-            ElMessage.success('注册成功')
-            router.push('/dashboard')
-          } else {
-            ElMessage.error(result.message)
-          }
-        }
-      })
-    }
-    
-    return {
-      registerFormRef,
-      registerForm,
-      rules,
-      loading,
-      handleRegister
-    }
+  } catch (err) {
+    ElMessage.error('请求失败，请稍后再试')
+    console.error(err)
+  } finally {
+    loading.value = false
   }
 }
 </script>
+
 
 <style scoped>
 .register-container {

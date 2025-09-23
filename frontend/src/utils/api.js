@@ -4,6 +4,7 @@ import axios from 'axios'
 const api = axios.create({
   baseURL: '/api',
   timeout: 10000,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -12,10 +13,11 @@ const api = axios.create({
 // 请求拦截器
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
+    // 登录和注册接口不需要带 token
+    if (config.url === '/api/auth/login' || config.url === '/api/auth/register') return config
+
+    // 不再从 localStorage 取 token，cookie 会自动携带
+    // axios 配置了 withCredentials 后，浏览器会自动带上 cookie
     return config
   },
   (error) => {

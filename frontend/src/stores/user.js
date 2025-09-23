@@ -1,58 +1,72 @@
-import { defineStore } from 'pinia'
-import axios from 'axios'
+// src/stores/user.js
+import { defineStore } from "pinia"
+import api from '@/utils/api'
 
-export const useUserStore = defineStore('user', {
+export const useUserStore = defineStore("user", {
   state: () => ({
-    user: { username: '演示用户', email: 'demo@example.com' }, // 临时模拟用户数据
-    token: localStorage.getItem('token') || 'demo-token' // 临时模拟token
+    user: null,        // 用户信息
+    isLoggedIn: false, // 登录状态
+    loading: false
   }),
-
-  getters: {
-    isLoggedIn: (state) => !!state.token,
-    userInfo: (state) => state.user
-  },
-
   actions: {
+    // 登录
     async login(credentials) {
+      this.loading = true
       try {
-        const response = await axios.post('/api/auth/login', credentials)
-        const { token, user } = response.data
-        
-        this.token = token
-        this.user = user
-        localStorage.setItem('token', token)
-        
-        return { success: true }
-      } catch (error) {
-        return { 
-          success: false, 
-          message: error.response?.data?.message || '登录失败' 
+        const res = await api.post("/auth/login", credentials, { withCredentials: true })
+        if (res.data.code === 200) {
+          this.user = res.data.data
+          this.isLoggedIn = true
+          return { success: true }
         }
+        return { success: false, message: res.data.msg || "登录失败" }
+      } catch (err) {
+        return { success: false, message: err.response?.data?.msg || "登录失败" }
+      } finally {
+        this.loading = false
       }
     },
 
-    async register(userData) {
+    // 注册
+    async register(credentials) {
+      this.loading = true
       try {
-        const response = await axios.post('/api/auth/register', userData)
-        const { token, user } = response.data
-        
-        this.token = token
-        this.user = user
-        localStorage.setItem('token', token)
-        
-        return { success: true }
-      } catch (error) {
-        return { 
-          success: false, 
-          message: error.response?.data?.message || '注册失败' 
+        const res = await api.post("/auth/register", credentials, { withCredentials: true })
+        if (res.data.code === 200) {
+          // 你可以决定注册成功是否直接登录
+          this.user = res.data.data
+          this.isLoggedIn = true
+          return { success: true,message: "注册成功" }
         }
+        return { success: false, message: res.data.msg || "注册失败" }
+      } catch (err) {
+        return { success: false, message: err.response?.data?.msg || "注册失败" }
+      } finally {
+        this.loading = false
       }
     },
 
+    // 初始化用户状态（页面刷新后调用）
+    async fetchCurrentUser() {
+      this.loading = true
+      try {
+        const res = await api.get("/auth/me", { withCredentials: true })
+        this.user = res.data.user
+        this.isLoggedIn = true
+      } catch {
+        this.user = null
+        this.isLoggedIn = false
+      } finally {
+        this.loading = false
+      }
+    },
+
+    // 登出
     logout() {
-      this.token = null
       this.user = null
-      localStorage.removeItem('token')
+      this.isLoggedIn = false
+      // 可调用后端登出接口清理 cookie
     }
   }
 })
+

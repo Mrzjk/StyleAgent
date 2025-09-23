@@ -10,7 +10,11 @@ agent_router = APIRouter(prefix="/agent",dependencies=[Depends(get_current_user)
 @agent_router.get("/")
 async def all_agents():
     """获取所有智能体"""
-    agent_cards =  await AgentCard.all().values("id","name","description","prompt","image")
+    agent_cards = await AgentCard.all().prefetch_related("category", "tag").values(
+        "id", "name", "description", "prompt", "image",
+        "category__id", "category__name",
+        "tag__id", "tag__name"
+    )
     return ResponseModel(
         data=agent_cards,
         message="获取所有智能体成功"
