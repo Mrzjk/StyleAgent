@@ -44,7 +44,7 @@
 
 **优先级说明：** Must（M）= 必须在 MVP 中实现；High（H）= 高优先级；Medium（MEd）= 中等；Low（L）= 低优先级。
 
-- 角色搜索与浏览（支持标签、示例台词、技能预览） — **M**
+- 角色创建与浏览（支持标签、示例台词、技能预览） — **M**
 - 角色详情页（角色简介、人格/限制设定、声音选择） — **M**
 - 语音聊天（浏览器语音识别 -> LLM -> TTS）— **M**
 - 会话上下文与短期记忆（会话内一致性） — **H**
@@ -65,7 +65,7 @@
 - 三个示范技能（Socratic、Storyteller、Quiz Master）
 - 会话内上下文记忆（session memory）
 - 简单安全过滤（关键词屏蔽）
-- 前端 React 原型 + Node 后端示例（负责代理模型请求与 TTS）
+- 前端 Vue 框架 + FastAPI 后端示例（负责代理模型请求与 TTS）
 
 ---
 
@@ -175,202 +175,44 @@ You are a Quiz Master in the domain of World History. Produce a 5-question multi
 ### 代码结构说明（示例）
 
 ```
-/ai-roleplay-demo
-  /frontend
-    src/App.jsx
-    src/components/RoleList.jsx
-    src/components/VoiceChat.jsx
-  /backend
-    server.js
-    routes/llm.js
-    routes/tts.js
-  .env
-  README.md
+-AIAgent
+  -frontend
+    -src/App.jsx
+    -src/components/RoleList.jsx
+    -src/components/VoiceChat.jsx
+  -backend
+    -agent (智能体)
+      -config
+         *
+      -schemas
+         -*
+      -utils
+         -*
+      -graph.py
+      -state.py
+      prompt.py
+    -api (路由)
+      -models(数据库的orm原型)
+         -agent_card..py
+         -agent_tag.py
+         -user.py
+         -*
+      -router （子路由）
+         -user_router.py
+         -auth_router.py
+         -agent_router.py
+         -***
+      -schemas（接受前端数据封装的类型）
+         -LoginIn.py
+         -FormData.py
+         -*
+    -.env  
+  -main.py
+ README.md
 ```
 
 ---
 
-### `frontend/src/App.jsx`（核心片段，Tailwind + React）
-
-```jsx
-import React from 'react'
-import RoleList from './components/RoleList'
-import VoiceChat from './components/VoiceChat'
-
-export default function App(){
-  return (
-    <div className="min-h-screen bg-slate-50 p-6">
-      <header className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold">AI Roleplay — 原型</h1>
-        <p className="text-sm text-slate-600">搜索角色，选择技能，按下麦克风开始对话。</p>
-      </header>
-
-      <main className="max-w-4xl mx-auto mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="col-span-1">
-          <RoleList />
-        </div>
-        <div className="md:col-span-2">
-          <VoiceChat />
-        </div>
-      </main>
-    </div>
-  )
-}
-```
-
-这里 `VoiceChat` 组件包含：
-- 浏览器端的语音识别（Web Speech API）用于 STT（若浏览器支持）。
-- 将识别结果与角色 + 技能一并 POST 到后端 `/api/llm`。
-- 接收 LLM 返回的文本回复并触发 `/api/tts` 生成音频（或用浏览器 TTS 作为回退）。
-
----
-
-### `frontend/src/components/VoiceChat.jsx`（核心逻辑要点）
-
-```jsx
-import React, {useState, useRef} from 'react'
-
-export default function VoiceChat(){
-  const [listening, setListening] = useState(false)
-  const [transcript, setTranscript] = useState('')
-  const [messages, setMessages] = useState([]) // [{role:'user'|'assistant', text}] 
-  const recognitionRef = useRef(null)
-
-  async function startListening(){
-    // Browser STT via Web Speech API (fallback to manual typing)
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    if(!SpeechRecognition) return alert('浏览器不支持语音识别，请使用 Chrome 或 Edge。')
-
-    const r = new SpeechRecognition()
-    r.lang = 'en-US'
-    r.interimResults = false
-    r.onresult = async (ev)=>{
-      const text = ev.results[0][0].transcript
-      setTranscript(text)
-      await sendToLLM(text)
-    }
-    r.onerror = (e)=>{ console.error(e); setListening(false) }
-    r.start()
-    recognitionRef.current = r
-    setListening(true)
-  }
-
-  function stopListening(){
-    if(recognitionRef.current){ recognitionRef.current.stop() }
-    setListening(false)
-  }
-
-  async function sendToLLM(userText){
-    const payload = {
-      roleId: localStorage.getItem('selectedRole') || 'socratic',
-      skill: localStorage.getItem('selectedSkill') || 'socratic',
-      messages: [...messages, {role:'user', text:userText}],
-    }
-    setMessages(prev=>[...prev, {role:'user', text:userText}])
-
-    const res = await fetch('/api/llm', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(payload)
-    })
-    const data = await res.json()
-    // { text, audioUrl? }
-    setMessages(prev=>[...prev, {role:'assistant', text: data.text}])
-
-    // 播放 TTS（优先后端生成音频）
-    if(data.audioUrl){
-      const a = new Audio(data.audioUrl)
-      await a.play()
-    }else{
-      // fallback 使用浏览器 TTS
-      const ut = new SpeechSynthesisUtterance(data.text)
-      window.speechSynthesis.speak(ut)
-    }
-  }
-
-  return (
-    <div className="bg-white p-4 rounded shadow">
-      <div className="flex items-center gap-3">
-        <button onClick={()=> listening ? stopListening() : startListening()} className="btn">
-          {listening ? 'Stop' : 'Start (voice)'}
-        </button>
-        <span className="text-sm text-slate-500">Transcript: {transcript}</span>
-      </div>
-
-      <div className="mt-4 space-y-2 max-h-80 overflow-auto">
-        {messages.map((m,i)=> (
-          <div key={i} className={m.role==='user' ? 'text-right' : 'text-left'}>
-            <div className={`inline-block p-2 rounded ${m.role==='user' ? 'bg-sky-100' : 'bg-slate-100'}`}>{m.text}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-```
-
-**要点**：前端只负责捕获用户语音/显示对话/播放音频；所有机密（API Key）与 TTS 合成由后端代理执行。
-
----
-
-### `backend/server.js`（示例 Node/Express 代理）
-
-```js
-import express from 'express'
-import fetch from 'node-fetch'
-import bodyParser from 'body-parser'
-import dotenv from 'dotenv'
-dotenv.config()
-const app = express()
-app.use(bodyParser.json())
-
-// POST /api/llm
-app.post('/api/llm', async (req, res)=>{
-  const { roleId, skill, messages } = req.body
-
-  // 构造 system prompt（示例）
-  const system = buildSystemPromptForRoleSkill(roleId, skill)
-  const providerPayload = {
-    model: process.env.LLM_MODEL || 'gpt-4o-realtime',
-    messages: [ {role:'system', content: system}, ...messages.map(m=>({role: m.role, content: m.text})) ]
-  }
-
-  // 这里以伪代码方式展示对 provider 的调用，请按你选定的 provider SDK/HTTP API 替换
-  const providerRes = await fetch(process.env.LLM_API_URL, {
-    method:'POST', headers:{ 'Authorization':`Bearer ${process.env.LLM_API_KEY}`, 'Content-Type':'application/json'},
-    body: JSON.stringify(providerPayload)
-  })
-  const providerData = await providerRes.json()
-  const text = providerData?.choices?.[0]?.message?.content || providerData?.output || '...' 
-
-  // 可选：调用 TTS，将 text 转为音频并返回音频 URL
-  const audioUrl = await synthesizeTTSAndGetUrl(text, {voice: 'alloy', tone: 'neutral'})
-
-  res.json({ text, audioUrl })
-})
-
-app.listen(3000, ()=> console.log('Server running on :3000'))
-
-function buildSystemPromptForRoleSkill(roleId, skill){
-  // 这里存放角色与技能模板（简化示意）
-  const templates = {
-    'socratic': {
-      system: "You are a Socratic tutor. Ask probing questions and never provide direct answers.",
-      'socratic': ''
-    },
-    'storyteller': { system: "You are a vivid storyteller..." },
-    'quiz': { system: "You are a quiz master. Provide clear MCQs and evaluate answers." }
-  }
-  return (templates[roleId]?.system || 'You are a helpful assistant.')
-}
-
-async function synthesizeTTSAndGetUrl(text, opts){
-  // 伪函数：调用所选 provider 的 TTS API（例如：OpenAI / Google Gemini / Google TTS）
-  // 这里实现时需要把 provider 的 key 放到 env 中，并写存储音频到 CDN / 本地再返回可访问 URL 的逻辑
-  return null // 表示没有音频，前端会 fallback 浏览器 TTS
-}
-```
-
-> 说明：后端示例把 `buildSystemPromptForRoleSkill` 抽象出来以便统一管理角色模板（技能是在 prompt 中定义的行为）。
 
 ---
 
@@ -381,9 +223,10 @@ async function synthesizeTTSAndGetUrl(text, opts){
    - `LLM_API_URL`（你的 provider endpoint）
    - `LLM_API_KEY`
    - `LLM_MODEL`（例如 `gpt-4o-realtime`）
-3. `cd backend && npm install && npm run dev`
-4. `cd frontend && npm install && npm run dev`（使用支持 Web Speech API 的浏览器）
-
+3. conda create -n agent python=3.11
+4.  pip install requirement.txt
+5. `cd backend\src && conda activate agent && python main.py`
+6. `cd frontend && npm install && npm run dev`（使用支持 Web Speech API 的浏览器）
 ---
 
 ## 11. 可扩展方向 & 路线图（后续迭代）
