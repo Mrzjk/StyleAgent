@@ -217,15 +217,15 @@ You are a Quiz Master in the domain of World History. Produce a 5-question multi
 ---
 
 ## 10. 运行与测试（快速入门）
-
+数据库 Mysql： 8.0.27
 1. 克隆仓库。
 2. 在 `backend/.env` 中配置：
    - `LLM_API_URL`（你的 provider endpoint）
    - `LLM_API_KEY`
    - `LLM_MODEL`（例如 `gpt-4o-realtime`）
 3. conda create -n agent python=3.11
-4.  pip install requirement.txt
-5. `cd backend\src && conda activate agent && python main.py`
+4.  conda activate agent && pip install -r requirements.txt
+5. `cd backend\src &&  && python main.py`
 6. `cd frontend && npm install && npm run dev`（使用支持 Web Speech API 的浏览器）
 ---
 
